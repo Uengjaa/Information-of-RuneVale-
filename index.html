@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RuneVale! — แผนพัฒนาเกม Roblox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e8edf0;--panel:#f6f8f9;--ink:#1b2433;--mute:#5a6678;--line:#c9d2d9;--crystal:#23808f;--rune:#9a6b14;--rune-bg:#f1e6cc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161c26;--panel:#1d2532;--ink:#e6ebf0;--mute:#9aa6b5;--line:#2f3a4a;--crystal:#5cc0cf;--rune:#e0b35a;--rune-bg:#3a3020;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161c26;--panel:#1d2532;--ink:#e6ebf0;--mute:#9aa6b5;--line:#2f3a4a;--crystal:#5cc0cf;--rune:#e0b35a;--rune-bg:#3a3020;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "IBM Plex Sans Thai",system-ui,sans-serif}
+a{color:var(--crystal);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--rune);outline-offset:2px}
+.wrap{display:grid;grid-template-columns:290px 1fr;min-height:100vh}
+nav{background:var(--panel);border-right:1px solid var(--line);padding:20px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;font-size:14px;line-height:1.5}
+nav .brand{font:700 20px "Noto Serif Thai",serif;color:var(--ink);text-decoration:none;display:block;margin-bottom:14px}
+nav details{margin:2px 0}
+nav summary{cursor:pointer;font-weight:600;padding:5px 0;list-style:none}
+nav summary::before{content:"▸ ";color:var(--rune)}
+nav details[open]>summary::before{content:"▾ "}
+nav ul{list-style:none;margin:0 0 6px;padding:0 0 0 14px;border-left:1px solid var(--line)}
+nav li a{display:block;padding:3px 8px;color:var(--mute);text-decoration:none;border-radius:4px}
+nav li a:hover{color:var(--ink);background:var(--bg)}
+nav .sub{padding-left:14px}
+main{max-width:820px;padding:56px 40px 96px}
+h1{font:700 clamp(32px,5vw,48px)/1.25 "Noto Serif Thai",serif;margin:0 0 12px;letter-spacing:-.01em}
+h2{font:700 24px/1.4 "Noto Serif Thai",serif;margin:56px 0 14px}
+.lede{font-size:18px;color:var(--mute);max-width:60ch;margin:0 0 8px}
+.loop{display:flex;flex-wrap:wrap;gap:0;margin:28px 0 0;padding:0;list-style:none;counter-reset:s}
+.loop li{counter-increment:s;position:relative;background:var(--panel);border:1px solid var(--line);padding:12px 16px 12px 40px;margin:0 -1px -1px 0;font-weight:500}
+.loop li::before{content:counter(s);position:absolute;left:14px;top:12px;font:700 15px "Noto Serif Thai",serif;color:var(--rune)}
+.loop li:nth-child(3){background:var(--rune-bg);border-color:var(--rune)}
+.note{color:var(--mute);font-size:14px;margin-top:10px}
+ul.plain{padding-left:20px}ul.plain li{margin:6px 0}
+ol.read{padding-left:0;list-style:none;counter-reset:r}
+ol.read li{counter-increment:r;display:grid;grid-template-columns:36px 1fr;padding:10px 0;border-bottom:1px solid var(--line)}
+ol.read li::before{content:counter(r);font:700 18px "Noto Serif Thai",serif;color:var(--rune)}
+ol.read span{display:block;color:var(--mute);font-size:14px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:480px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--mute);font-size:14px}
+td:last-child{white-space:nowrap}
+.docs p{margin:8px 0}
+.docs b{display:inline-block;min-width:4.5em}
+@media (max-width:860px){
+.wrap{display:block}
+nav{position:static;height:auto;max-height:none;border-right:0;border-bottom:1px solid var(--line)}
+main{padding:36px 20px 72px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="เมนู">
+<a class="brand" href="#top">RuneVale!</a>
+<div id="tree"></div>
+</nav>
+<main id="top">
+<h1>RuneVale! — แผนพัฒนาเกม Roblox</h1>
+<p class="lede">เอกสารวางแผนและบันทึกการพัฒนาเกม RuneVale! ที่ออกแบบและพัฒนาเอง ทุกหน้าคือโน้ต Obsidian ที่ใช้ทำงานจริงระหว่างพัฒนา</p>
+
+<h2>เกมนี้คืออะไร</h2>
+<p><b>Sword-Egg Heist</b> เกมแฟนตาซีโทนลึกลับ คริสตัล ซากโบราณ และบอส ผู้เล่นตีมอนและบอสให้ดรอป “ดาบไข่” แล้วต้องแบกหนีกลับ Safe Zone ระหว่างทางบอสไล่ และผู้เล่นอื่นแย่งได้</p>
+<ol class="loop">
+<li>ตีมอนและบอส</li><li>ดรอปดาบไข่</li><li>แบกหนีกลับ Safe Zone</li><li>วางในฐาน</li><li>ฟักเป็น Unit</li><li>Unit ตีมอนหาเงิน</li><li>อัปเกรด ไปด่านที่ยากขึ้น</li>
+</ol>
+<p class="note">ขั้นที่ 3 คือช่วงเสี่ยงที่สุดของวงจร</p>
+
+<h2>ทำอะไรบ้าง</h2>
+<ul class="plain">
+<li><b>ออกแบบเกม:</b> แนวเกม วงจรการเล่น ระบบความก้าวหน้า ตารางดรอป ระดับความหายาก</li>
+<li><b>โมเดล 3D:</b> ฉาก บอส Unit และอาวุธ ปั้นใน Blender แล้วนำเข้า Roblox</li>
+<li><b>พัฒนาในเกม:</b> สร้างแมพและระบบใน Roblox Studio (Luau)</li>
+<li><b>วางแผนและติดตามงาน:</b> ใช้ Obsidian เป็นศูนย์กลาง 1 ระบบ = 1 โน้ต, Roadmap แบ่ง Phase, บันทึกการตัดสินใจ</li>
+</ul>
+
+<h2>แนะนำลำดับการอ่าน</h2>
+<ol class="read" id="read"></ol>
+
+<h2>ความคืบหน้า (พฤศจิกายน 2026)</h2>
+<div class="scroll"><table>
+<thead><tr><th>ส่วน</th><th>สถานะ</th></tr></thead>
+<tbody>
+<tr><td>Lobby, Lobby 2, ระบบฐาน 6 ฐาน, เซฟข้อมูล</td><td>✅ เสร็จแล้ว</td></tr>
+<tr><td>ด่าน 1 Crystal Sanctuary + บอส</td><td>✅ เสร็จแล้ว</td></tr>
+<tr><td>ด่าน 2 ทะเลทราย + บอส Ashen Warden</td><td>✅ เสร็จแล้ว</td></tr>
+<tr><td>ด่าน 3 Frozen Abyss + บอส Abyssal Frost Titan</td><td>🟡 ระบบหลักเสร็จ เหลือ Index / เพลง</td></tr>
+<tr><td>ทดสอบกับผู้เล่น, ปรับประสิทธิภาพ, เปิดสาธารณะ</td><td>⏳ ตาม Roadmap</td></tr>
+</tbody></table></div>
+
+<h2>เอกสารทั้งหมด</h2>
+<div class="docs" id="docs"></div>
+</main>
+</div>
+<script>
+var B="https://runevale-garden.vercel.app/roblox-game-project/";
+var DOCS=[["00 - Project Dashboard","00-project-dashboard"],["01 - Game Concept","01-game-concept"],["02 - Core Gameplay Loop","02-core-gameplay-loop"],["03 - Progression and Upgrades","03-progression-and-upgrades"],["04 - Weapons and Items","04-weapons-and-items"],["05 - Characters and Creatures","05-characters-and-creatures"],["06 - Bosses and Rewards","06-bosses-and-rewards"],["07 - World and Map Design","07-world-and-map-design"],["08 - UI and Player Experience","08-ui-and-player-experience"],["09 - Technical Architecture","09-technical-architecture"],["10 - Performance Optimization","10-performance-optimization"],["11 - Monetization","11-monetization"],["12 - Development Roadmap","12-development-roadmap"],["13 - Decisions and Open Questions","13-decisions-and-open-questions"],["14 - Game Systems","14-game-systems"]];
+var SYS=[["Base",[["Crystal Golem","crystal-golem"],["Plot - Base Assignment","plot-base-assignment"],["Power Crystal","power-crystal"],["Sword Forge","sword-forge"],["Upgrade Sign","upgrade-sign"],["Void Slime","void-slime"]]],
+["Combat",[["Player Sword","player-sword"],["Ragdoll and Knockback","ragdoll-and-knockback"],["Sword Stance","sword-stance"]]],
+["Core",[["Data Save","data-save"],["Legacy Systems","legacy-systems"],["Safe Zone","safe-zone"],["World Reset","world-reset"],["Zone Music","zone-music"]]],
+["Items",[["Accessory","accessory"],["Forgeman and Sell Unit","forgeman-and-sell-unit"],["Index","index"],["Potion","potion"],["Shop","shop"]]],
+["Lobby",[["Loading Screen and Intro","loading-screen-and-intro"],["Lobby 2 and Floating Islands","lobby-2-and-floating-islands"],["Lobby Area","lobby-area"],["Lobby Portal","lobby-portal"],["Relic Showcase","relic-showcase"]]],
+["Stages",[["Ancient Crystal Guardian","ancient-crystal-guardian"],["Ashen Warden","ashen-warden"],["Crystal Beast","crystal-beast"],["Crystal Warden","crystal-warden"],["Day Night Cycle","day-night-cycle"],["Frozen Abyss (Future)","frozen-abyss-future"],["Stage 1 - Crystal Sanctuary","stage-1-crystal-sanctuary"],["Stage 2 - Desert","stage-2-desert"]]],
+["Sword Egg",[["Egg Placement and Hatch","egg-placement-and-hatch"],["Rune","rune"],["Stage System Rule","stage-system-rule"],["Sword Egg Drop and Pickup","sword-egg-drop-and-pickup"],["Unit Patrol","unit-patrol"],["Unit Skills","unit-skills"]]],
+["UI",[["Bag UI","bag-ui"],["HUD","hud"],["Settings","settings"],["Units UI","units-ui"]]]];
+var SRC=[["FrozenBoss Config","frozen-boss-config"],["PlotSystem","plot-system"],["Source Code","source-code"],["SpeedCap","speed-cap"],["WorldClock","world-clock"],["WorldResetSystem","world-reset-system"]];
+function a(t,u){return '<a href="'+u+'" target="_blank" rel="noopener">'+t+'</a>'}
+function list(arr,p){return '<ul>'+arr.map(function(x){return '<li>'+a(x[0],B+p+x[1]+'/')+'</li>'}).join('')+'</ul>'}
+var h='<details open><summary>เอกสารหลัก</summary>'+list(DOCS,'')+'</details>';
+h+='<details><summary>Systems</summary><div class="sub">'+SYS.map(function(g){return '<details><summary>'+g[0]+'</summary>'+list(g[1],'systems/'+g[0].toLowerCase().replace(' ','-')+'/')+'</details>'}).join('')+'</div></details>';
+h+='<details><summary>Source Code</summary>'+list(SRC,'source-code/')+'</details>';
+document.getElementById('tree').innerHTML=h;
+var R=[[1,"แนวเกม และทางเลือกที่เคยพิจารณาก่อนตัดสินใจ"],[2,"วงจรหลักของเกม"],[12,"แผนพัฒนาแบ่ง Phase พร้อม checklist"],[13,"การตัดสินใจสำคัญและเหตุผล"],[14,"สารบัญระบบทั้งหมดในเกม พร้อมสถานะ"],[0,"สถานะล่าสุดของโปรเจกต์ หน้าที่ใช้ทำงานจริง"]];
+document.getElementById('read').innerHTML=R.map(function(r){var d=DOCS[r[0]];return '<li><div>'+a(d[0],B+d[1]+'/')+'<span>'+r[1]+'</span></div></li>'}).join('')+'<li><div>'+a('Source Code',B+'source-code/source-code/')+'<span>ตัวอย่างโค้ดจากเกมจริง พร้อมคำอธิบาย</span></div></li>';
+document.getElementById('docs').innerHTML='<p><b>ออกแบบ</b> '+DOCS.slice(3,9).map(function(d){return a(d[0],B+d[1]+'/')}).join(' &nbsp;|&nbsp; ')+'</p><p><b>เทคนิค</b> '+DOCS.slice(9,12).map(function(d){return a(d[0],B+d[1]+'/')}).join(' &nbsp;|&nbsp; ')+'</p>';
+</script>
+</body>
+</html>
